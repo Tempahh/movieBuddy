@@ -6,6 +6,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { User, UserSchema } from './schemas/user.schema';
 import { Movie, MovieSchema } from './schemas/movie.schema';
 import { Booking, BookingSchema } from './schemas/booking.schema';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { Booking, BookingSchema } from './schemas/booking.schema';
       { name: Movie.name, schema: MovieSchema },
       { name: Booking.name, schema: BookingSchema },
     ]),
+    AuthModule,
   ],
 })
 export class AppModule {}
