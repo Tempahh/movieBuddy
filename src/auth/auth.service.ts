@@ -15,13 +15,17 @@ export class AuthService {
   ) {}
 
   async register(userDto: RegisterDto) {
-    const hashedPassword = await bcrypt.hash(userDto.password, 10);
-    const newUser = new this.userModel({
-      ...userDto,
-      password: hashedPassword,
-    });
-    await newUser.save();
-    return this.generateToken(newUser);
+    try {
+      const hashedPassword = await bcrypt.hash(userDto.password, 10);
+      const newUser = new this.userModel({
+        ...userDto,
+        password: hashedPassword,
+      });
+      await newUser.save();
+      return this.generateToken(newUser);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async login(userDto: RegisterDto) {

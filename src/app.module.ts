@@ -7,6 +7,7 @@ import { User, UserSchema } from './schemas/user.schema';
 import { Movie, MovieSchema } from './schemas/movie.schema';
 import { Booking, BookingSchema } from './schemas/booking.schema';
 import { AuthModule } from './auth/auth.module';
+import { MovieModule } from './movie/movie.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { AuthModule } from './auth/auth.module';
       { name: Booking.name, schema: BookingSchema },
     ]),
     AuthModule,
+    MovieModule,
   ],
 })
 export class AppModule {}

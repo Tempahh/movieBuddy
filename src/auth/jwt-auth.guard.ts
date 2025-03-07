@@ -1,8 +1,5 @@
-import {
-  Injectable,
-  CanActivate,
-  ExecutionContext,
-} from '@nestjs/common/interfaces';
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
@@ -15,7 +12,7 @@ export class JwtAuthGuard implements CanActivate {
 
     if (!authorization) return false;
 
-    const token = authorization.split(' ')[1];
+    const token: string = authorization.split(' ')[1];
     try {
       request.user = this.jwtService.verify(token);
       return true;
